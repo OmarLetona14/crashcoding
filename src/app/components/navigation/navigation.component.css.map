@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,CAAA;EACH,gBAAgB,EAHX,OAAO;CAIf",
+    "sources": [
+        "navigation.component.scss"
+    ],
+    "names": [],
+    "file": "navigation.component.css"
+}

@@ -1,0 +1,74 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 align-self-center p-2">
+            <div class="card shadow-lg border-0">
+                <div class="card-header text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="../../../assets/large_crashcoding.png" width="150px" height="100px" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="row g-3" novalidate [formGroup]="loginForm">
+                        <div class="col-md-12">
+                            <div class="form-group text-center">
+                                <label class="form-label"><i class="fas fa-envelope"></i> Correo electronico</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" class="form-control rounded-pill shadow-lg"
+                                    placeholder="Correo electronico" formControlName="email"
+                                    [class]="validField('email')" autofocus>
+                                <div class="invalid-feedback">
+                                    <span *ngIf="loginForm.get('email').errors?.required">
+                                        <strong>Por favor, introduzca un email.</strong>
+                                    </span>
+                                    <span *ngIf="loginForm.get('email').errors?.pattern">
+                                        <strong>Correo electronico no valido.</strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group text-center">
+                                <label for="" class="form-label"><i class="fas fa-unlock-alt"></i> Password</label>
+                            </div>
+                            <div class="form-group">
+                                <input name="password" id="password" class="form-control rounded-pill shadow-lg"
+                                    placeholder="Password" [type]="passwordType" formControlName="password"
+                                    [class]="validField('password')" data-toggle="password">
+                                <div class="invalid-feedback">
+                                    <span *ngIf="loginForm.get('password').errors?.required">
+                                        <strong>Por favor, introduzca un password.</strong>
+                                    </span>
+                                </div>
+                                <div class="text-center pt-4">
+                                    <a class="btn btn-outline rounded-pill border-0 btn-shake"
+                                        style="background-color: transparent;"
+                                        (click)="loginForm.get('password').value != '' ? showPassword() : ''">
+                                        <div class="text-center" *ngIf="passwordType == 'password'">Mostrar contraseña
+                                            <i class="far fa-eye"></i>
+                                        </div>
+                                        <div class="text-center" *ngIf="passwordType == 'text'">Ocultar contraseña <i
+                                                class="far fa-eye-slash"></i></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-lg btn-block rounded-pill shadow-lg mb-4"
+                                [ngClass]="isValidData()">
+                                Iniciar sesion
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
