@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SpinnerService } from 'src/app/services/spinner.service';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,8 @@ export class LoginComponent implements OnInit {
   passwordType:string = 'password'
   private emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private spinner:SpinnerService,
+    private usuarioService:UserService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -23,6 +27,33 @@ export class LoginComponent implements OnInit {
     ? 'is-invalid' : validatedField?.touched ? 'is-valid' : '';
   }
 
+  onLogin(){
+    if (this.loginForm.valid){
+      const formValues = this.loginForm.value;
+      try {
+        this.spinner.getSpinner();
+        if(this.usuarioService.login(formValues.email, formValues.password)){
+          this.spinner.stopSpinner();
+          location.pathname = '/paises';
+        }else{
+          Swal.fire('Credenciales incorrectas', `<strong>
+          Las credenciales que proporciono no corresponden a ningun usuario registrado.
+        </strong>`, 'error');
+          this.spinner.stopSpinner();
+        }
+        
+      } catch (error) {
+        Swal.fire('Ocurrio un error', `<strong>
+         Error al comunicarse con el servidor.
+        </strong>`, 'error');
+      }
+    }
+    else{
+      Swal.fire('Campos incorrectos', `<strong>
+      Por favor, llene todos los campos de manera correcta.
+      </strong>`, 'error');
+    }
+  }
   isValidData():String{
     if (this.loginForm.valid){
       return 'btn-success';
@@ -39,7 +70,7 @@ export class LoginComponent implements OnInit {
       this.passwordType = 'text'
     }
   }
-  
+
   private initForm():void{
     this.loginForm = this.fb.group({
       // Estructura [valor inicial, validaciones  ]

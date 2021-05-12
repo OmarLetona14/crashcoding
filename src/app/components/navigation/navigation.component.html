@@ -11,16 +11,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink=""><i class="fas fa-home"></i> Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" routerLink="" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                <ng-container *ngIf="logged">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                    </li>
+                </ng-container>
             </ul>
         </div>
-    </div>
+    </div>  
 </nav>

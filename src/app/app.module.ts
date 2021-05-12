@@ -9,6 +9,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { CardexampleComponent } from './components/cardexample/cardexample.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';  
+import { NgxSpinnerModule } from "ngx-spinner";
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     NavigationComponent,
     CardexampleComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    NgxSpinnerModule,
+    HttpClientModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

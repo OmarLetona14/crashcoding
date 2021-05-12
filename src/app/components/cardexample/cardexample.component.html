@@ -1,1 +1,19 @@
-<p>cardexample works!</p>
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let c of countries">
+            <div class="col-md-4 p-4">
+                <div class="card shadow-lg rounded border-0">
+                    <div class="card-header">
+                        <h2><img class="rounded" width="75px" height="50px" [src]="c.flag" alt=""> {{c.name}}</h2>
+                        <h4>Capital: <strong>{{c.capital}}</strong> </h4>
+                    </div>
+                    <div class="card-body bg-light">
+                        <p>Poblacion: {{c.population | number:0}}</p>
+                        <p>Area: {{c.area | number:0}} ㎢</p>
+                        <p>Region: {{c.region}}</p>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
