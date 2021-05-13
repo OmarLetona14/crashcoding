@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
           this.spinner.stopSpinner();
           location.pathname = '/paises';
         }else{
+          this.loginForm.reset();
           Swal.fire('Credenciales incorrectas', `<strong>
           Las credenciales que proporciono no corresponden a ningun usuario registrado.
         </strong>`, 'error');
@@ -63,6 +64,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  isValid():Boolean{
+    if (this.loginForm.valid){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   showPassword(){
     if (this.passwordType == 'text') {
         this.passwordType = 'password';
