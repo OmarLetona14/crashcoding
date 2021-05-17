@@ -13,6 +13,7 @@ import {MatCardModule} from '@angular/material/card';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
     NavigationComponent,
     CardexampleComponent,
     SpinnerComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "crashcoding-97597"
+  },
+  "targets": {
+    "crashcoding-97597": {
+      "hosting": {
+        "guardsexample": [
+          "crashcoding-97597"
+        ]
+      }
+    }
   }
 }

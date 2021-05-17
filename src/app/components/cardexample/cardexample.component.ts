@@ -25,7 +25,7 @@ export class CardexampleComponent implements OnInit {
         this.spinnerService.stopSpinner();
       },
       err => {
-        Swal.fire(`Opps!`, `Looks like our server its on trouble`, `error`);
+        Swal.fire(`Opps!`, `Looks like our server it's on trouble`, `error`);
         this.spinnerService.stopSpinner();
       }
     );
